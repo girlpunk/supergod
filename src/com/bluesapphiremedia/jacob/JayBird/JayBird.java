@@ -69,6 +69,7 @@ public class JayBird extends JavaPlugin {
 	Logger Log = Logger.getLogger("Minecraft");
 	// register our player listener
 	private final JayBirdPlayerListener playerListener = new JayBirdPlayerListener(this);
+	private final JayBirdWorldListener worldListener = new JayBirdWorldListener(this);
 	
 	public void onEnable(){ 
 		// get us a plugin manager
@@ -77,6 +78,8 @@ public class JayBird extends JavaPlugin {
 		pm.registerEvent(Event.Type.ENTITY_DAMAGE, playerListener, Event.Priority.Normal, this);
 		// tell us when a player's food level changes, so we can refill it
 		pm.registerEvent(Event.Type.FOOD_LEVEL_CHANGE, playerListener, Event.Priority.Normal, this);
+		// tell us if the weather changes, so we can cancel it
+		pm.registerEvent(Event.Type.WEATHER_CHANGE, worldListener, Event.Priority.Normal, this);
 		// log that we loaded successfully
 		Log.info("JayBird v0.0.1 enabled successfully!");
 	}

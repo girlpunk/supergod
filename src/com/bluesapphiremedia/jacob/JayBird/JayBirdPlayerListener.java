@@ -3,6 +3,7 @@ package com.bluesapphiremedia.jacob.JayBird;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerListener;
 
 public class JayBirdPlayerListener extends PlayerListener {
@@ -14,7 +15,7 @@ public class JayBirdPlayerListener extends PlayerListener {
 	}
 	public void onEntityDamage(EntityDamageEvent event){
 		// check if the entity is a player
-		if(event.getEntity() instanceof Player) {
+		if((event.getEntity() instanceof Player) && ((event.getCause() != DamageCause.LIGHTNING) || (event.getCause() != DamageCause.SUICIDE))) {
 			// if so, cancel the damage
 			event.setCancelled(true);
 		}
