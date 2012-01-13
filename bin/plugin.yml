@@ -1,0 +1,11 @@
+name: JayBird
+main: com.bluesapphiremedia.jacob.JayBird.JayBird
+version: 0.0.1
+description: A custom plugin for Mistveil, does some custom stuff
+author: cyberjacob
+website: www.bluesapphiremedia.co.uk
+database: false
+commands:
+    projects:
+        description: Project interaction
+        usage: /<command>
